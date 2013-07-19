@@ -1,3 +1,18 @@
+{- A binary tree can be visualized as a Node with a left subtree and a right subtree
+   Left or Right subtrees can be empty if its a leaf node
+		a
+	       / \
+	      b   c
+	     / \   \
+	    d   e   f
+             
+
+
+data Tree a = Node a (Tree a) (Tree a) | EmptyTree deriving (Show)
+ 		  |	   |        |
+		 node	  left     right
+-}
+
 data Tree a = Node a (Tree a) (Tree a) | EmptyTree deriving (Show)
 
 insert :: (Ord a) => a -> Tree a -> Tree a
