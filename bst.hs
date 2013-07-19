@@ -52,6 +52,14 @@ smallest tree = head (inOrder tree [])
 greatest :: (Ord a) => Tree a -> a
 greatest tree = last (inOrder tree [])
 
+-- mirror image of a given tree
+mirror :: (Ord a) => Tree a -> Tree a
+mirror EmptyTree = EmptyTree
+mirror (Node a left right) = let rightSubTree = right
+				 leftSubTree = left
+			     in  (Node a (mirror rightSubTree) (mirror leftSubTree))
+
+
 -- Fill in elements
 fill :: [Int] -> Tree Int -> Tree Int
 fill [] tree = tree
