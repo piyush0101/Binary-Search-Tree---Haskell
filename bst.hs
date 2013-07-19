@@ -59,8 +59,7 @@ mirror (Node a left right) = let rightSubTree = right
 				 leftSubTree = left
 			     in  (Node a (mirror rightSubTree) (mirror leftSubTree))
 
-
 -- Fill in elements
-fill :: [Int] -> Tree Int -> Tree Int
+fill :: (Ord a) => [a] -> Tree a -> Tree a
 fill [] tree = tree
 fill (x:xs) tree = let subtree = insert x tree in fill (xs) subtree
