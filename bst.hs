@@ -36,6 +36,22 @@ inOrder :: (Ord a) => Tree a -> [a] -> [a]
 inOrder EmptyTree xs = []
 inOrder (Node a left right) xs = xs ++ inOrder left xs ++ [a] ++ inOrder right xs
 
+-- find an element in the binary search tree
+find :: (Ord a) => a -> Tree a -> Maybe a
+find x EmptyTree = Nothing
+find x (Node a left right)
+	| x == a = Just x
+	| x < a = find x left
+	| x > a = find x right	
+
+-- smallest element in the binary search tree
+smallest :: (Ord a) => Tree a -> a
+smallest tree = head (inOrder tree [])
+
+-- greatest element in the binary search tree
+greatest :: (Ord a) => Tree a -> a
+greatest tree = last (inOrder tree [])
+
 -- Fill in elements
 fill :: [Int] -> Tree Int -> Tree Int
 fill [] tree = tree
