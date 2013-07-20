@@ -55,9 +55,7 @@ greatest tree = last (inOrder tree [])
 -- mirror image of a given tree
 mirror :: (Ord a) => Tree a -> Tree a
 mirror EmptyTree = EmptyTree
-mirror (Node a left right) = let rightSubTree = right
-				 leftSubTree = left
-			     in  (Node a (mirror rightSubTree) (mirror leftSubTree))
+mirror (Node a left right) = (Node a (mirror right) (mirror left))
 
 -- Fill in elements
 fill :: (Ord a) => [a] -> Tree a -> Tree a
