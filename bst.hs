@@ -12,6 +12,19 @@
 -- 		 |	 |        |
 --		node	left     right
 
+module BST
+( Tree(..)
+, fill
+, insert
+, preOrder
+, postOrder
+, inOrder
+, find
+, mirror
+, smallest
+, greatest
+) where
+
 data Tree a = Node a (Tree a) (Tree a) | EmptyTree deriving (Show)
 
 insert :: (Ord a) => a -> Tree a -> Tree a
