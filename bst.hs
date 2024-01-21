@@ -2,6 +2,7 @@ module BST
 ( Tree(..)
 , fill
 , insert
+, delete
 , preOrder
 , postOrder
 , inOrder
@@ -19,6 +20,19 @@ insert elem (Node a left right)
 	| elem == a = (Node elem left right)
 	| elem < a = (Node a (insert elem left) right)
 	| elem > a = (Node a left (insert elem right))
+
+-- Removes the value from the BST if it exists, returning the new BST
+delete :: (Ord a) => a -> Tree a -> Tree a
+delete x EmptyTree = EmptyTree
+delete x (Node a l r) 
+    | x < a = Node a (delete x l) r
+    | x > a = Node a l (delete x r) 
+delete x (Node a EmptyTree EmptyTree) = EmptyTree
+delete x (Node a l EmptyTree) = l
+delete x (Node a EmptyTree r) = r
+delete x (Node a l r) = Node new l r'
+    where new = smallest r
+          r' = delete new r
 
 -- Pre order traversal - node left right
 preOrder :: (Ord a) => Tree a -> [a] -> [a]
